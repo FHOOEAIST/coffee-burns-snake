@@ -1,10 +1,33 @@
-# <Project name >
+![Logo](./documentation/logo.png)
 
-<project description>
+This project shows a performance comparision of Java and Python in the context of image processing. The comparision is done using different interpreters based on pure programming language specific implementations without any additional frameworks as well as comparisions based on state of the art frameworks. As foundation of the comparision we are using a simple kernel-based averaging filter on a greyscale image.
+
+In addition to the state of the art frameworks we also compare the different implementations with our [Imaging](https://github.com/FHOOEAIST/imaging) project.
+
+The idea of this project is based on the comparision of Pereira et. al in the context of energy efficiency across programming languages.
+```
+@inproceedings{pereira2017energy,
+  title={Energy efficiency across programming languages: how do energy, time, and memory relate?},
+  author={Pereira, Rui and Couto, Marco and Ribeiro, Francisco and Rua, Rui and Cunha, J{\'a}come and Fernandes, Jo{\~a}o Paulo and Saraiva, Jo{\~a}o},
+  booktitle={Proceedings of the 10th ACM SIGPLAN International Conference on Software Language Engineering},
+  pages={256--267},
+  year={2017}
+}
+```
+
+## Results
+
+TODO
+
+
 
 ## Getting Started
 
-<Write how to get started. e.g. which dependencies are required, how you can build the project. and how you can start.>
+To reproduce the results just use the provided .bat file and adapt the path to the folder that is mounted into the used Docker containers.
+
+### Requirements
+
+This comparision uses Java and Python in a Docker environment. For this reason [Docker](https://www.docker.com/) is required to execute the comparision on your own.
 
 ## FAQ
 
@@ -16,7 +39,7 @@ If you have any questions, please checkout our <insert FAQ link here if using ma
    
 ## Licence
 
-Copyright (c) 2020 the original author or authors.
+Copyright (c) 2021 the original author or authors.
 DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
 
 This Source Code Form is subject to the terms of the Mozilla Public
