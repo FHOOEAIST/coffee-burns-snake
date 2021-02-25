@@ -2,6 +2,7 @@ import pickle
 import timeit
 from itertools import product
 
+import cv2 as cv
 import numba
 import numpy as np
 from numba.typed import List as nList
@@ -249,6 +250,11 @@ def run_with_numpy_and_scipy(matrix: list, h: int, w: int, kernel: int = 3):
     return ndimage.convolve(_matrix, conv, mode='constant', cval=0)
 
 
+def run_with_opencv(matrix: list, h: int, w: int, kernel: int = 3):
+    conv = np.ones((kernel, kernel), dtype=np.float32) / 25
+    return cv.filter2D(matrix, -1, conv)
+
+
 runs = [(run_pure_simple_python, 0),  # 0
         (run_with_itertools, 0),  # 1
         (run_pure_simple_python_with_numba, 1),  # 2
@@ -257,7 +263,8 @@ runs = [(run_pure_simple_python, 0),  # 0
         (run_with_numpy, 2),  # 5
         (run_with_numpy_with_numba, 2),  # 6
         (run_with_numpy_with_numba_parallel, 2),  # 7
-        (run_with_numpy_and_scipy, 2)  # 8
+        (run_with_numpy_and_scipy, 2),  # 8
+        (run_with_opencv, 3)  # 9
         ]
 
 
@@ -288,8 +295,8 @@ def comp(v1, v2):
 if __name__ == '__main__':
     # V1 - classic python
     debug_run = False
-    width = 1920 # 20  # 1920
-    height = 1080 # 20  # 1080
+    width = 1920  # 20  # 1920
+    height = 1080  # 20  # 1080
     kernel_size = 5
     arr = list(np.zeros((height, width)).tolist())
     v = 0
@@ -302,10 +309,11 @@ if __name__ == '__main__':
     np_arr = np.asarray(arr)
 
     if debug_run:
-        for i in range(5, len(runs)):
+        for i in range(0, len(runs)):
             print(f"Run Timed: {i}")
             run, converted = build_run(i)
-
+            if converted == 3:
+                run_timed(run, np.asarray(np_arr, dtype=np.uint8), height, width, kernel_size)
             if converted == 2:
                 res = run(np_arr, height, width, kernel_size)
             elif converted == 1:
@@ -324,7 +332,9 @@ if __name__ == '__main__':
         for i in range(0, len(runs)):
             run, converted = build_run(i)
             print(f"Run: {i} - {run.__name__}")
-            if converted == 2:
+            if converted == 3:
+                run_timed(run, np.asarray(np_arr, dtype=np.uint8), height, width, kernel_size)
+            elif converted == 2:
                 run_timed(run, np_arr, height, width, kernel_size)
             elif converted == 1:
                 run_timed(run, n_arr, height, width, kernel_size)
