@@ -1,6 +1,6 @@
 ![Logo](./documentation/logo.png)
 
-This project shows a performance comparision of Java and Python in the context of image processing. The comparision is done using different interpreters based on pure programming language specific implementations without any additional frameworks as well as comparisions based on state of the art frameworks. As foundation of the comparision we are using a simple kernel-based averaging filter on a greyscale image.
+Python and C++ are the most common programming languages, when it comes to image processing and computer vision. Especially, Python has grown more and more in this area in recent years. With this project we want to show that image processing is not only limited to these progamming languages. For this reason, we present a performance comparision of Java and Python in the context of image processing. The comparision is done using pure programming language specific implementations without any additional frameworks as well as comparisions based on state of the art frameworks. In addition to that we also compare the implementations using different interpreters. As foundation of the comparision we are using a simple kernel-based averaging filter on a greyscale image.
 
 In addition to the state of the art frameworks we also compare the different implementations with our [Imaging](https://github.com/FHOOEAIST/imaging) project.
 
@@ -17,7 +17,7 @@ The idea of this project is based on the comparision of Pereira et. al in the co
 
 ## Results
 
-TODO
+TODO - show results, and list/describe used frameworks
 
 
 
