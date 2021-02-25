@@ -8,12 +8,12 @@ public class OpenCVPerformanceTest {
 
     public static void main(String[] args) {
         AistCVLoader.loadShared();
-        int warmups = 25;
-        int runs = 100;
+        int warmups = 250;
+        int runs = 10000;
         int imageWidth = 1920;
         int imageHeight = 1080;
 
-        Mat mat = Mat.zeros(imageHeight, imageWidth, CvType.CV_32F);
+        Mat mat = Mat.zeros(imageHeight, imageWidth, CvType.CV_8U);
         for (int x = 0; x < imageWidth; x++) {
             for (int y = 0; y < imageHeight; y++) {
                 mat.put(x,y,current);
@@ -35,10 +35,10 @@ public class OpenCVPerformanceTest {
         }
 
         for (int i = 0; i < runs; i++) {
-            long before = System.currentTimeMillis();
+            long before = System.nanoTime();
             Imgproc.filter2D(mat, mat2, -1, kernel);
-            long after = System.currentTimeMillis();
-            System.out.println("Runs(" + i + ") - Runtime: " + (after - before));
+            long after = System.nanoTime();
+            System.out.println("Runs(" + i + ") - Runtime: " + (after - before) + "ns");
         }
     }
 }

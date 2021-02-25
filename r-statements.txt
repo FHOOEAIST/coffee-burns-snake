@@ -1,1 +1,5 @@
 ggplot(stack(Speed), aes(x=ind, y = values)) + geom_boxplot() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + xlab("Type/Runs") + ylab("ms")
+
+
+
+"C:\Program Files\OpenJDK\openjdk-11.0.10_9\bin\java" -cp "C:\Public\git\_github\coffee-burns-snake;aistcv-4.3.0.jar" OpenCVPerformanceTest
