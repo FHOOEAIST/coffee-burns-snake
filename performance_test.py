@@ -287,9 +287,9 @@ def comp(v1, v2):
 
 if __name__ == '__main__':
     # V1 - classic python
-    debug_run = True
-    width = 20  # 1920
-    height = 20  # 1080
+    debug_run = False
+    width = 1920 # 20  # 1920
+    height = 1080 # 20  # 1080
     kernel_size = 5
     arr = list(np.zeros((height, width)).tolist())
     v = 0
