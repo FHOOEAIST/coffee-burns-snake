@@ -13,6 +13,7 @@ set volumeimaging=%basepath%:/app/
 set statementplaint=java -cp /app/ Test
 set statementimagingsingle=java -cp /app/:/app/core_single.jar PerformanceTest
 set statementimagingparallel=java -cp /app/:/app/core_parallel.jar PerformanceTest
+set statementopencv=java -cp /app/:/app/aistcv-4.3.0.jar OpenCVPerformanceTest
 
 set statementpython=/bin/bash -c "cd /app; pip install -r requirements.txt; python performance_test.py"
 
@@ -42,6 +43,10 @@ docker container run -v %volumeimaging% --rm %amazoncorretto% %statementimagingp
 docker container run -v %volumeimaging% --rm %zulu% %statementimagingparallel% > res/zulu-imaging-parallel.txt
 docker container run -v %volumeimaging% --rm %adopt% %statementimagingparallel% > res/adopt-imaging-parallel.txt
 docker container run -v %volumeimaging% --rm %graaljdk% %statementimagingparallel% > res/graaljdk-imaging-parallel.txt
+
+rem Java using OpenCV
+
+docker container run -v %volumeimaging% --rm %openjdk% %statementopencv% > res/openjdk-opencv-parallel.txt
 
 rem Python
 
