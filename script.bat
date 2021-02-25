@@ -1,4 +1,4 @@
-set basepath=C:\Public\git\_github\coffee-burns-snake
+set basepath=C:\Users\P41743\Desktop\cbs\coffee-burns-snake
 
 set openjdk=openjdk:11-jre-slim
 set amazoncorretto=amazoncorretto:11-alpine
@@ -22,26 +22,26 @@ mkdir res
 rem Java Plain
 
 docker container run -v %volumeimaging% --rm %openjdk% %statementplaint% > res/openjdk-plain.txt
-rem docker container run -v %volumeimaging% --rm %amazoncorretto% %statementplaint% > res/amazoncorretto-plain.txt
-rem docker container run -v %volumeimaging% --rm %zulu% %statementplaint% > res/zulu-plain.txt
-rem docker container run -v %volumeimaging% --rm %adopt% %statementplaint% > res/adopt-plain.txt
-rem docker container run -v %volumeimaging% --rm %graaljdk% %statementplaint% > res/graaljdk-plain.txt
+docker container run -v %volumeimaging% --rm %amazoncorretto% %statementplaint% > res/amazoncorretto-plain.txt
+docker container run -v %volumeimaging% --rm %zulu% %statementplaint% > res/zulu-plain.txt
+docker container run -v %volumeimaging% --rm %adopt% %statementplaint% > res/adopt-plain.txt
+docker container run -v %volumeimaging% --rm %graaljdk% %statementplaint% > res/graaljdk-plain.txt
 
 rem Java using Imaging (Single Core)
 
 docker container run -v %volumeimaging% --rm %openjdk% %statementimagingsingle% > res/openjdk-imaging-single.txt
-rem docker container run -v %volumeimaging% --rm %amazoncorretto% %statementimagingsingle% > res/amazoncorretto-imaging-single.txt
-rem docker container run -v %volumeimaging% --rm %zulu% %statementimagingsingle% > res/zulu-imaging-single.txt
-rem docker container run -v %volumeimaging% --rm %adopt% %statementimagingsingle% > res/adopt-imaging-single.txt
-rem docker container run -v %volumeimaging% --rm %graaljdk% %statementimagingsingle% > res/graaljdk-imaging-single.txt
+docker container run -v %volumeimaging% --rm %amazoncorretto% %statementimagingsingle% > res/amazoncorretto-imaging-single.txt
+docker container run -v %volumeimaging% --rm %zulu% %statementimagingsingle% > res/zulu-imaging-single.txt
+docker container run -v %volumeimaging% --rm %adopt% %statementimagingsingle% > res/adopt-imaging-single.txt
+docker container run -v %volumeimaging% --rm %graaljdk% %statementimagingsingle% > res/graaljdk-imaging-single.txt
 
 rem Java using Imaging (Multi Core)
 
 docker container run -v %volumeimaging% --rm %openjdk% %statementimagingparallel% > res/openjdk-imaging-parallel.txt
-rem docker container run -v %volumeimaging% --rm %amazoncorretto% %statementimagingparallel% > res/amazoncorretto-imaging-parallel.txt
-rem docker container run -v %volumeimaging% --rm %zulu% %statementimagingparallel% > res/zulu-imaging-parallel.txt
-rem docker container run -v %volumeimaging% --rm %adopt% %statementimagingparallel% > res/adopt-imaging-parallel.txt
-rem docker container run -v %volumeimaging% --rm %graaljdk% %statementimagingparallel% > res/graaljdk-imaging-parallel.txt
+docker container run -v %volumeimaging% --rm %amazoncorretto% %statementimagingparallel% > res/amazoncorretto-imaging-parallel.txt
+docker container run -v %volumeimaging% --rm %zulu% %statementimagingparallel% > res/zulu-imaging-parallel.txt
+docker container run -v %volumeimaging% --rm %adopt% %statementimagingparallel% > res/adopt-imaging-parallel.txt
+docker container run -v %volumeimaging% --rm %graaljdk% %statementimagingparallel% > res/graaljdk-imaging-parallel.txt
 
 rem Python
 

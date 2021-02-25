@@ -267,10 +267,10 @@ def build_run(run_version: int):
 
 def run_timed(func, matrix: list, h: int, w: int, kernel: int = 3):
     # warmup
-    warm_up_times = timeit.repeat(lambda: func(matrix, h, w, kernel), number=1, repeat=5)
-    # run_times = timeit.repeat(lambda: func(matrix, h, w, kernel), number=1, repeat=100)
+    warm_up_times = timeit.repeat(lambda: func(matrix, h, w, kernel), number=1, repeat=25)
+    run_times = timeit.repeat(lambda: func(matrix, h, w, kernel), number=1, repeat=100)
     print(f"WarmUp: {warm_up_times}")
-    # print(f"RunTimes: {run_times}")
+    print(f"RunTimes: {run_times}")
 
 
 def comp(v1, v2):
@@ -321,7 +321,7 @@ if __name__ == '__main__':
             comp('rev_v0.pickle', f'rev_v{i}.pickle')
 
     if not debug_run:
-        for i in range(2, len(runs)):
+        for i in range(0, len(runs)):
             run, converted = build_run(i)
             print(f"Run: {i} - {run.__name__}")
             if converted == 2:
