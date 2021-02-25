@@ -246,12 +246,12 @@ def run_with_numpy_with_numba_parallel(matrix: list, h: int, w: int, kernel: int
 
 def run_with_numpy_and_scipy(matrix: list, h: int, w: int, kernel: int = 3):
     _matrix = np.asarray(matrix)
-    conv = np.ones((kernel, kernel), dtype=int)
+    conv = np.ones((kernel, kernel), dtype=int) / (kernel * kernel)
     return ndimage.convolve(_matrix, conv, mode='constant', cval=0)
 
 
 def run_with_opencv(matrix: list, h: int, w: int, kernel: int = 3):
-    conv = np.ones((kernel, kernel), dtype=np.float32) / 25
+    conv = np.ones((kernel, kernel), dtype=np.float32) / (kernel * kernel)
     return cv.filter2D(matrix, -1, conv)
 
 
@@ -307,13 +307,14 @@ if __name__ == '__main__':
             v %= 255
     n_arr = fix_array_or_list(arr)
     np_arr = np.asarray(arr)
+    np_uint_arr = np.asarray(np_arr, dtype=np.uint8)
 
     if debug_run:
         for i in range(0, len(runs)):
             print(f"Run Timed: {i}")
             run, converted = build_run(i)
             if converted == 3:
-                run_timed(run, np.asarray(np_arr, dtype=np.uint8), height, width, kernel_size)
+                run_timed(run, np_uint_arr, height, width, kernel_size)
             if converted == 2:
                 res = run(np_arr, height, width, kernel_size)
             elif converted == 1:
@@ -333,7 +334,7 @@ if __name__ == '__main__':
             run, converted = build_run(i)
             print(f"Run: {i} - {run.__name__}")
             if converted == 3:
-                run_timed(run, np.asarray(np_arr, dtype=np.uint8), height, width, kernel_size)
+                run_timed(run, np_uint_arr, height, width, kernel_size)
             elif converted == 2:
                 run_timed(run, np_arr, height, width, kernel_size)
             elif converted == 1:
