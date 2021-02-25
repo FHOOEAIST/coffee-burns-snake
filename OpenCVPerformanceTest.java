@@ -38,7 +38,7 @@ public class OpenCVPerformanceTest {
             long before = System.nanoTime();
             Imgproc.filter2D(mat, mat2, -1, kernel);
             long after = System.nanoTime();
-            System.out.println("Runs(" + i + ") - Runtime: " + (after - before) + "ns");
+            System.out.println(""+((after - before)/1000000.0));
         }
     }
 }

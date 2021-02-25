@@ -3,7 +3,7 @@ import science.aist.imaging.api.domain.wrapper.ImageWrapper;
 import science.aist.imaging.api.domain.wrapper.implementation.ImageFactoryFactory;
 import science.aist.imaging.service.core.imageprocessing.filter.ConvolveFunction;
 
-public class PerformanceTest {
+public class Imaging {
 
     public static int current = 0;
 
@@ -36,7 +36,7 @@ public class PerformanceTest {
             long before = System.currentTimeMillis();
             cf.apply(image, averageKernel);
             long after = System.currentTimeMillis();
-            System.out.println("Runs(" + i + ") - Runtime: " + (after - before));
+            System.out.println("" + (after - before));
         }
 
 

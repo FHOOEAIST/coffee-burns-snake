@@ -1,6 +1,4 @@
-import java.util.stream.IntStream;
-
-public class Test {
+public class Pure {
     public static void main(String[] args) {
         int warmup = 25;
         int runs = 100;
@@ -69,7 +67,7 @@ public class Test {
 
             long after = System.currentTimeMillis();
             if(r > warmup - 1){
-                System.out.println("#" + (r - warmup) + " Kernel Runtime: " + (after - before));
+                System.out.println("" + (after - before));
             }
         }
     }

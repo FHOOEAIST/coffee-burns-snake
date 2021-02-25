@@ -277,8 +277,8 @@ def run_timed(func, matrix: list, h: int, w: int, kernel: int = 3):
     warm_up_times = timeit.repeat(lambda: func(matrix, h, w, kernel), number=1, repeat=25)
     run_times = timeit.repeat(lambda: func(matrix, h, w, kernel), number=1, repeat=100)
     print(f"WarmUp: {warm_up_times}")
-    print(f"RunTimes: {run_times}")
-
+    for x in run_times:
+        print(str(x*1000))
 
 def comp(v1, v2):
     with open(v1, 'rb') as f:

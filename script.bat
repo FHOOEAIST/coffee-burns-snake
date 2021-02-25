@@ -10,9 +10,9 @@ set python3710=python:3.7.10-buster
 
 set volumeimaging=%basepath%:/app/
 
-set statementplaint=java -cp /app/ Test
-set statementimagingsingle=java -cp /app/:/app/core_single.jar PerformanceTest
-set statementimagingparallel=java -cp /app/:/app/core_parallel.jar PerformanceTest
+set statementplaint=java -cp /app/ Pure
+set statementimagingsingle=java -cp /app/:/app/core_single.jar Imaging
+set statementimagingparallel=java -cp /app/:/app/core_parallel.jar Imaging
 set statementopencv=java -cp /app/:/app/aistcv-4.3.0.jar OpenCVPerformanceTest
 
 set statementpython=/bin/bash -c "apt update; apt install -y libgl1-mesa-glx; cd /app; pip install -r requirements.txt; python performance_test.py"
