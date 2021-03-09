@@ -14,6 +14,7 @@ set statementplaint=java -cp /app/ Pure
 set statementimagingsingle=java -cp /app/:/app/core_single.jar Imaging
 set statementimagingparallel=java -cp /app/:/app/core_parallel.jar Imaging
 set statementopencv=java -cp /app/:/app/aistcv-4.3.0.jar OpenCVPerformanceTest
+set statementopenimaj=java -cp /app/:/app/openimaj-1.3.10.jar OpenImajTest
 
 set statementpython=/bin/bash -c "apt update; apt install -y libgl1-mesa-glx; cd /app; pip install -r requirements.txt; python performance_test.py"
 
@@ -47,6 +48,10 @@ docker container run -v %volumeimaging% --rm %graaljdk% %statementimagingparalle
 rem Java using OpenCV
 
 docker container run -v %volumeimaging% --rm %openjdk% %statementopencv% > res/openjdk-opencv-parallel.txt
+
+rem Java using OpenIMAJ
+
+docker container run -v %volumeimaging% --rm %openjdk% %statementopenimaj% > res/openjdk-openimaj.txt
 
 rem Python
 
