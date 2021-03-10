@@ -255,16 +255,16 @@ def run_with_opencv(matrix: list, h: int, w: int, kernel: int = 3):
     return cv.filter2D(matrix, -1, conv)
 
 
-runs = [(run_pure_simple_python, 0),  # 0
-        (run_with_itertools, 0),  # 1
-        (run_pure_simple_python_with_numba, 1),  # 2
-        (run_pure_simple_python_with_numba_parallel, 1),  # 3
-        (run_with_itertools_with_numba, 1),  # 4
-        (run_with_numpy, 2),  # 5
-        (run_with_numpy_with_numba, 2),  # 6
-        (run_with_numpy_with_numba_parallel, 2),  # 7
-        (run_with_numpy_and_scipy, 2),  # 8
-        (run_with_opencv, 3)  # 9
+runs = [(run_pure_simple_python, 0, 25, 100),  # 0
+        (run_with_itertools, 0, 25, 100),  # 1
+        (run_pure_simple_python_with_numba, 1, 100, 1000),  # 2
+        (run_pure_simple_python_with_numba_parallel, 1, 100, 1000),  # 3
+        (run_with_itertools_with_numba, 1, 100, 1000),  # 4
+        (run_with_numpy, 2, 25, 100),  # 5
+        (run_with_numpy_with_numba, 2, 100, 1000),  # 6
+        (run_with_numpy_with_numba_parallel, 2, 100, 1000),  # 7
+        (run_with_numpy_and_scipy, 2, 100, 1000),  # 8
+        (run_with_opencv, 3, 100, 1000)  # 9
         ]
 
 
@@ -272,10 +272,10 @@ def build_run(run_version: int):
     return runs[run_version]
 
 
-def run_timed(func, matrix: list, h: int, w: int, kernel: int = 3):
+def run_timed(func, matrix: list, h: int, w: int, warmpup:int = 100, measurement:int = 1000, kernel: int = 3):
     # warmup
-    warm_up_times = timeit.repeat(lambda: func(matrix, h, w, kernel), number=1, repeat=25)
-    run_times = timeit.repeat(lambda: func(matrix, h, w, kernel), number=1, repeat=100)
+    warm_up_times = timeit.repeat(lambda: func(matrix, h, w, kernel), number=1, repeat=warmpup)
+    run_times = timeit.repeat(lambda: func(matrix, h, w, kernel), number=1, repeat=measurement)
     print(f"WarmUp: {warm_up_times}")
     for x in run_times:
         print(str(x*1000))
@@ -312,15 +312,15 @@ if __name__ == '__main__':
     if debug_run:
         for i in range(0, len(runs)):
             print(f"Run Timed: {i}")
-            run, converted = build_run(i)
+            run, converted, warmup, measurement = build_run(i)
             if converted == 3:
-                run_timed(run, np_uint_arr, height, width, kernel_size)
+                run_timed(run, np_uint_arr, height, width, warmup, measurement, kernel_size)
             if converted == 2:
-                res = run(np_arr, height, width, kernel_size)
+                res = run(np_arr, height, width, warmup, measurement, kernel_size)
             elif converted == 1:
-                res = run(n_arr, height, width, kernel_size)
+                res = run(n_arr, height, width, warmup, measurement, kernel_size)
             elif converted == 0:
-                res = run(arr, height, width, kernel_size)
+                res = run(arr, height, width, warmup, measurement, kernel_size)
             else:
                 raise ValueError("Not implemented")
 
@@ -331,15 +331,15 @@ if __name__ == '__main__':
 
     if not debug_run:
         for i in range(0, len(runs)):
-            run, converted = build_run(i)
+            run, converted, warmup, measurement = build_run(i)
             print(f"Run: {i} - {run.__name__}")
             if converted == 3:
-                run_timed(run, np_uint_arr, height, width, kernel_size)
+                run_timed(run, np_uint_arr, height, width, warmup, measurement, kernel_size)
             elif converted == 2:
-                run_timed(run, np_arr, height, width, kernel_size)
+                run_timed(run, np_arr, height, width, warmup, measurement, kernel_size)
             elif converted == 1:
-                run_timed(run, n_arr, height, width, kernel_size)
+                run_timed(run, n_arr, height, width, warmup, measurement, kernel_size)
             elif converted == 0:
-                run_timed(run, arr, height, width, kernel_size)
+                run_timed(run, arr, height, width, warmup, measurement, kernel_size)
             else:
                 raise ValueError("Not implemented")

@@ -8,8 +8,8 @@ public class OpenCVPerformanceTest {
 
     public static void main(String[] args) {
         AistCVLoader.loadShared();
-        int warmups = 250;
-        int runs = 10000;
+        int warmups = 100;
+        int runs = 1000;
         int imageWidth = 1920;
         int imageHeight = 1080;
 

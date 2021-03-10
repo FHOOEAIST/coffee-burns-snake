@@ -1,7 +1,7 @@
 public class Pure {
     public static void main(String[] args) {
-        int warmup = 25;
-        int runs = 100;
+        int warmup = 100;
+        int runs = 1000;
 
         int width = 1920;
         int height = 1080;

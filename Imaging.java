@@ -8,8 +8,8 @@ public class Imaging {
     public static int current = 0;
 
     public static void main(String[] args) {
-        int warmups = 25;
-        int runs = 100;
+        int warmups = 100;
+        int runs = 1000;
         int imageWidth = 1920;
         int imageHeight = 1080;
 
