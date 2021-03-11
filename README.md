@@ -44,6 +44,8 @@ the [numpy array](https://numpy.org/doc/stable/reference/generated/numpy.array.h
 [numba](https://numba.pydata.org/) to evaluate the performance utilizing JIT compilation. Finally, we are adding the
 OpenCV filter2D in Python, to see how it performs there.
 
+Every implementation was executed with 100 warmup runs and 1000 measured execution runs.
+
 All of this now results in the following test-setup:
 
 | Execution Name | Language | Framework | Parallel |
@@ -65,16 +67,25 @@ All of this now results in the following test-setup:
 | zulu-imaging-parallel | Java 11 (Zulu OpenJDK) | Imaging | X |
 | zulu-imaging-single | Java 11 (Zulu OpenJDK) | Imaging |  |
 | zulu-pure | Java 11 (Zulu OpenJDK) | Pure Java |  |
-| python-pure-simple | Python 3.7.10 | Pure Python |  |
-| python-with-itertools | Python 3.7.10 | Itertools |  |
+| python-pure-simple (*) | Python 3.7.10 | Pure Python |  |
+| python-with-itertools (*) | Python 3.7.10 | Itertools |  |
 | python-pure-simple-with-numba | Python 3.7.10 | Numba |  |
 | python-pure-simple-with-numba-parallel | Python 3.7.10 | Numba | X |
 | python-itertools-with-numba | Python 3.7.10 | Itertools + Numba |  |
-| python-with-numpy | Python 3.7.10 | Numpy |  |
+| python-with-numpy (*) | Python 3.7.10 | Numpy |  |
 | python-with-numpy-with-numba | Python 3.7.10 | Numpy + Numba |  |
 | python-with-numpy-with-numba-parallel | Python 3.7.10 | Numpy + Numba | X |
 | python-with-numpy-and-scipy | Python 3.7.10 | Numpy + Scipy (convolve) |  |
 | python-with-opencv | Python 3.7.10 | OpenCV (filter2d) |  |
+
+(*) This implementation was executed with a reduced amout of runs (25 warmup and 100 measured executions), because of the huge time impact of a single run.
+
+The setup was executed on a computer with:
+- Windows 10
+- AMD Ryzen 9 3900X 12-Core Processor
+- 64GB RAM
+
+using Docker 20.10.2 and a limitation to 4 CPU cores per run (see script.bat). None of the used implementations utilizes the computation power of a GPU.
 
 ## Results
 
@@ -108,11 +119,23 @@ All of this now results in the following test-setup:
 | python-with-numpy-and-scipy | 33.72 | 33.68 | 0.26 | 33.00 | 35.66 |
 | python-with-opencv | 4.62 | 4.61 | 0.05 | 4.55 | 4.82 |
 
-![](documentation/All_except_outliers.svg)
+The following figure contains the measurments in form of a box plot diagram with the runtime in ms on the y-axis for the different implementations, that are listed on the x-axis. Note that `python-pure-simple`, `python-with-itertools`, `python-itertools-with-numba` and `python-with-numpy` are excluded, because of the non-comparable runtime of multiple seconds in average.
+
+![measurments](documentation/All_except_outliers.svg)
+
+## Conclusion
+
+First of all, the presented implementation of a convolution filter is not ideal at all, since convolutions can be implemented in a highly optimized way as shown with `openjdk-opencv`, `openjdk-openimaj`, `python-with-numpy-and-scipy` and `python-with-opencv`. But a pixel-wise read and write access of an image is a often required task in image processing and for this we have chosen this as foundation of our comparision. 
+
+Refereing only to the Java implementations the comparision shows that the used JDK has an high impact to the actual runtime - independent of single or multi core usage. For this, it can be seen that the usage of Graal has a positive impact according to the runtime of the executed implementations. 
+
+The implementations also show that classic approaches in the context of image processing using for loops to iterate the pixels of an image are not ideal with pure Python code (without using additional frameworks). In the case of many executions, this disadvantage can be bypassed using JIT compilition with `Numba`, that in turn leads to a high performance boost. 
+
+The comparision of `openjdk-openimaj` and `python-with-numpy-and-scipy` shows, that there are nearly no performance differences between Java or Python if state-of-the-art image processing frameworks are used. Based on the comparision of the language specialized wrappers of the `OpenCV` framework Java's overhead of the native function call seems to highly outperform the Python version. 
 
 ## Getting Started
 
-To reproduce the results just use the provided .bat file and adapt the path to the folder that is mounted into the used
+To reproduce the results just use the provided `script.bat` file and adapt the path to the folder that is mounted into the used
 Docker containers.
 
 ### Requirements
