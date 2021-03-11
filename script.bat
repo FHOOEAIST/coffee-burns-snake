@@ -23,36 +23,36 @@ mkdir res
 
 rem Java Plain
 
-docker container run -v %volumeimaging% --rm %openjdk% %statementplaint% > res/openjdk-plain.txt
-docker container run -v %volumeimaging% --rm %amazoncorretto% %statementplaint% > res/amazoncorretto-plain.txt
-docker container run -v %volumeimaging% --rm %zulu% %statementplaint% > res/zulu-plain.txt
-docker container run -v %volumeimaging% --rm %adopt% %statementplaint% > res/adopt-plain.txt
-docker container run -v %volumeimaging% --rm %graaljdk% %statementplaint% > res/graaljdk-plain.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %openjdk% %statementplaint% > res/openjdk-plain.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %amazoncorretto% %statementplaint% > res/amazoncorretto-plain.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %zulu% %statementplaint% > res/zulu-plain.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %adopt% %statementplaint% > res/adopt-plain.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %graaljdk% %statementplaint% > res/graaljdk-plain.txt
 
 rem Java using Imaging (Single Core)
 
-docker container run -v %volumeimaging% --rm %openjdk% %statementimagingsingle% > res/openjdk-imaging-single.txt
-docker container run -v %volumeimaging% --rm %amazoncorretto% %statementimagingsingle% > res/amazoncorretto-imaging-single.txt
-docker container run -v %volumeimaging% --rm %zulu% %statementimagingsingle% > res/zulu-imaging-single.txt
-docker container run -v %volumeimaging% --rm %adopt% %statementimagingsingle% > res/adopt-imaging-single.txt
-docker container run -v %volumeimaging% --rm %graaljdk% %statementimagingsingle% > res/graaljdk-imaging-single.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %openjdk% %statementimagingsingle% > res/openjdk-imaging-single.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %amazoncorretto% %statementimagingsingle% > res/amazoncorretto-imaging-single.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %zulu% %statementimagingsingle% > res/zulu-imaging-single.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %adopt% %statementimagingsingle% > res/adopt-imaging-single.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %graaljdk% %statementimagingsingle% > res/graaljdk-imaging-single.txt
 
 rem Java using Imaging (Multi Core)
 
-docker container run -v %volumeimaging% --rm %openjdk% %statementimagingparallel% > res/openjdk-imaging-parallel.txt
-docker container run -v %volumeimaging% --rm %amazoncorretto% %statementimagingparallel% > res/amazoncorretto-imaging-parallel.txt
-docker container run -v %volumeimaging% --rm %zulu% %statementimagingparallel% > res/zulu-imaging-parallel.txt
-docker container run -v %volumeimaging% --rm %adopt% %statementimagingparallel% > res/adopt-imaging-parallel.txt
-docker container run -v %volumeimaging% --rm %graaljdk% %statementimagingparallel% > res/graaljdk-imaging-parallel.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %openjdk% %statementimagingparallel% > res/openjdk-imaging-parallel.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %amazoncorretto% %statementimagingparallel% > res/amazoncorretto-imaging-parallel.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %zulu% %statementimagingparallel% > res/zulu-imaging-parallel.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %adopt% %statementimagingparallel% > res/adopt-imaging-parallel.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %graaljdk% %statementimagingparallel% > res/graaljdk-imaging-parallel.txt
 
 rem Java using OpenCV
 
-docker container run -v %volumeimaging% --rm %openjdk% %statementopencv% > res/openjdk-opencv-parallel.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %openjdk% %statementopencv% > res/openjdk-opencv-parallel.txt
 
 rem Java using OpenIMAJ
 
-docker container run -v %volumeimaging% --rm %openjdk% %statementopenimaj% > res/openjdk-openimaj.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %openjdk% %statementopenimaj% > res/openjdk-openimaj.txt
 
 rem Python
 
-docker container run -v %volumeimaging% --rm %python3710% %statementpython% > res/python-3-7-10.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %python3710% %statementpython% > res/python-3-7-10.txt
