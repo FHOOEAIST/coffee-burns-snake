@@ -38,7 +38,7 @@ Please note, that these implementations rely on a different concept on how to ap
 ### Python
 
 In Python, we compare a pure Python-based implementation, with state-of-the-art frameworks
-like [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.convolve.html). In addition to that we
+like [scipy](https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.convolve.html#scipy.ndimage.convolve). In addition to that we
 compare how the base array type performs in comparison with
 the [numpy array](https://numpy.org/doc/stable/reference/generated/numpy.array.html). Moreover, we added the framework
 [numba](https://numba.pydata.org/) to evaluate the performance utilizing JIT compilation. Finally, we are adding the
