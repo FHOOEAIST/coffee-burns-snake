@@ -80,33 +80,35 @@ All of this now results in the following test-setup:
 
 | Execution Name | Avg | Median | Stdev | Min | Max |
 |---|--:|--:|--:|--:|--:|
-| adopt-imaging-parallel | 74.72 | 74.00 | 2.21 | 73.00 | 92.00 |
+| adopt-imaging-parallel | 123.23 | 127.00 | 8.08 | 111.00 | 148.00 |
 | adopt-imaging-single | 266.91 | 267.00 | 1.51 | 264.00 | 275.00 |
-| adopt-pure | 236.23 | 236.00 | 3.08 | 233.00 | 263.00 |
-| amazoncorretto-imaging-parallel | 66.43 | 66.00 | 2.16 | 65.00 | 78.00 |
+| adopt-plain | 236.23 | 236.00 | 3.08 | 233.00 | 263.00 |
+| amazoncorretto-imaging-parallel | 110.96 | 115.00 | 7.27 | 101.00 | 140.00 |
 | amazoncorretto-imaging-single | 260.64 | 260.00 | 4.10 | 256.00 | 289.00 |
-| amazoncorretto-pure | 231.82 | 231.00 | 3.96 | 229.00 | 262.00 |
-| graaljdk-imaging-parallel | 76.06 | 76.00 | 2.53 | 74.00 | 95.00 |
+| amazoncorretto-plain | 231.82 | 231.00 | 3.96 | 229.00 | 262.00 |
+| graaljdk-imaging-parallel | 110.13 | 113.00 | 5.53 | 102.00 | 137.00 |
 | graaljdk-imaging-single | 226.76 | 226.00 | 2.61 | 224.00 | 261.00 |
-| graaljdk-pure | 163.37 | 163.00 | 3.61 | 161.00 | 247.00 |
-| openjdk-imaging-parallel | 73.97 | 73.00 | 2.56 | 72.00 | 99.00 |
+| graaljdk-plain | 163.37 | 163.00 | 3.61 | 161.00 | 247.00 |
+| openjdk-imaging-parallel | 122.05 | 125.00 | 8.07 | 111.00 | 151.00 |
 | openjdk-imaging-single | 266.25 | 266.00 | 4.09 | 263.00 | 293.00 |
 | openjdk-opencv | 0.39 | 0.39 | 0.01 | 0.37 | 0.49 |
 | openjdk-openimaj | 30.99 | 30.00 | 1.52 | 29.00 | 35.00 |
-| openjdk-pure | 236.35 | 236.00 | 4.01 | 232.00 | 269.00 |
+| openjdk-plain | 236.35 | 236.00 | 4.01 | 232.00 | 269.00 |
 | zulu-imaging-parallel | 84.96 | 84.00 | 2.26 | 83.00 | 101.00 |
 | zulu-imaging-single | 277.46 | 277.00 | 4.50 | 273.00 | 308.00 |
-| zulu-pure | 248.50 | 248.00 | 4.41 | 244.00 | 282.00 |
+| zulu-plain | 248.50 | 248.00 | 4.41 | 244.00 | 282.00 |
 | python-pure-simple | 14597.56 | 14521.56 | 228.28 | 14342.33 | 15254.21 |
 | python-with-itertools | 13166.17 | 13155.98 | 31.02 | 13118.70 | 13239.89 |
 | python-pure-simple-with-numba | 236.77 | 236.48 | 1.00 | 234.98 | 243.49 |
-| python-pure-simple-with-numba-parallel | 40.41 | 40.16 | 1.14 | 39.46 | 49.95 |
+| python-pure-simple-with-numba-parallel | 159.98 | 195.07 | 45.43 | 90.25 | 210.42 |
 | python-itertools-with-numba | 3355.02 | 3352.39 | 11.11 | 3334.98 | 3410.89 |
 | python-with-numpy | 8622.70 | 8613.33 | 37.41 | 8557.27 | 8795.89 |
 | python-with-numpy-with-numba | 83.09 | 83.01 | 0.34 | 82.45 | 85.86 |
-| python-with-numpy-with-numba-parallel | 3.68 | 3.62 | 0.44 | 3.49 | 11.21 |
+| python-with-numpy-with-numba-parallel | 31.39 | 4.13 | 40.52 | 3.26 | 103.60 |
 | python-with-numpy-and-scipy | 33.72 | 33.68 | 0.26 | 33.00 | 35.66 |
 | python-with-opencv | 4.62 | 4.61 | 0.05 | 4.55 | 4.82 |
+
+![](documentation/Java-Single-Core.svg)
 
 ## Getting Started
 
