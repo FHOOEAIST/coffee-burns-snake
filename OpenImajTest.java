@@ -1,5 +1,3 @@
-package science.aist.imaging.service.openimaj.imageprocessing;
-
 import org.openimaj.image.FImage;
 import org.openimaj.image.processing.convolution.FourierConvolve;
 
