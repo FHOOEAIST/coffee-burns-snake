@@ -12,18 +12,8 @@ greyscale image.
 In addition to the state-of-the-art frameworks we also compare the different implementations with
 our [Imaging](https://github.com/FHOOEAIST/imaging) project.
 
-The idea of this project is based on the comparison of Pereira et. al in the context of energy efficiency across
-programming languages.
-
-```
-@inproceedings{pereira2017energy,
-  title={Energy efficiency across programming languages: how do energy, time, and memory relate?},
-  author={Pereira, Rui and Couto, Marco and Ribeiro, Francisco and Rua, Rui and Cunha, J{\'a}come and Fernandes, Jo{\~a}o Paulo and Saraiva, Jo{\~a}o},
-  booktitle={Proceedings of the 10th ACM SIGPLAN International Conference on Software Language Engineering},
-  pages={256--267},
-  year={2017}
-}
-```
+The idea of this project is based on the comparison of [Pereira et. al](https://doi.org/10.1145/3136014.3136031) in the
+context of energy efficiency across programming languages.
 
 ## Setup
 
@@ -34,7 +24,7 @@ section will describe the different concepts and will show the different executi
 ### Java
 
 The main comparison in Java is between a pure Java-based implementation (compare Pure.java) and the implementation of
-the [Imaging-Framework](https://github.com/FHOOEAIST/imaging). The plain implementation is using simple for-loops to
+the [Imaging-Framework](https://github.com/FHOOEAIST/imaging). The pure implementation is using simple for-loops to
 iterate through the image, whereas the Imaging-Framework is using multiple abstraction layers, to get a high advanced
 software architecture. Behind that
 the [Java Streaming API](https://docs.oracle.com/javase/8/docs/api/java/util/stream/package-summary.html) is utilized to
@@ -60,22 +50,22 @@ All of this now results in the following test-setup:
 |-|-|-|-|
 | adopt-imaging-parallel | Java 11 (AdoptOpenJDK) | Imaging | X |
 | adopt-imaging-single | Java 11 (AdoptOpenJDK) | Imaging |  |
-| adopt-plain | Java 11 (AdoptOpenJDK) | Plain Java |  |
+| adopt-pure | Java 11 (AdoptOpenJDK) | Pure Java |  |
 | amazoncorretto-imaging-parallel | Java 11 (Amazon Corretto) | Imaging | X |
 | amazoncorretto-imaging-single | Java 11 (Amazon Corretto) | Imaging |  |
-| amazoncorretto-plain | Java 11 (Amazon Corretto) | Plain Java |  |
+| amazoncorretto-pure | Java 11 (Amazon Corretto) | Pure Java |  |
 | graaljdk-imaging-parallel | Java 11 (GraalVM) | Imaging | X |
 | graaljdk-imaging-single | Java 11 (GraalVM) | Imaging |  |
-| graaljdk-plain | Java 11 (GraalVM) | Plain Java |  |
+| graaljdk-pure | Java 11 (GraalVM) | Pure Java |  |
 | openjdk-imaging-parallel | Java 11 (OpenJDK) | Imaging | X |
 | openjdk-imaging-single | Java 11 (OpenJDK) | Imaging |  |
 | openjdk-opencv | Java 11 (OpenJDK) | OpenCV (filter2d) |  |
 | openjdk-openimaj | Java 11 (OpenJDK) | OpenImaJ (FourierConvolve) |  |
-| openjdk-plain | Java 11 (OpenJDK) | Plain Java |  |
+| openjdk-pure | Java 11 (OpenJDK) | Pure Java |  |
 | zulu-imaging-parallel | Java 11 (Zulu OpenJDK) | Imaging | X |
 | zulu-imaging-single | Java 11 (Zulu OpenJDK) | Imaging |  |
-| zulu-plain | Java 11 (Zulu OpenJDK) | Plain Java |  |
-| python-pure-simple | Python 3.7.10 | Plain Python |  |
+| zulu-pure | Java 11 (Zulu OpenJDK) | Pure Java |  |
+| python-pure-simple | Python 3.7.10 | Pure Python |  |
 | python-with-itertools | Python 3.7.10 | Itertools |  |
 | python-pure-simple-with-numba | Python 3.7.10 | Numba |  |
 | python-pure-simple-with-numba-parallel | Python 3.7.10 | Numba | X |
@@ -92,21 +82,21 @@ All of this now results in the following test-setup:
 |---|--:|--:|--:|--:|--:|
 | adopt-imaging-parallel | 74.72 | 74.00 | 2.21 | 73.00 | 92.00 |
 | adopt-imaging-single | 266.91 | 267.00 | 1.51 | 264.00 | 275.00 |
-| adopt-plain | 236.23 | 236.00 | 3.08 | 233.00 | 263.00 |
+| adopt-pure | 236.23 | 236.00 | 3.08 | 233.00 | 263.00 |
 | amazoncorretto-imaging-parallel | 66.43 | 66.00 | 2.16 | 65.00 | 78.00 |
 | amazoncorretto-imaging-single | 260.64 | 260.00 | 4.10 | 256.00 | 289.00 |
-| amazoncorretto-plain | 231.82 | 231.00 | 3.96 | 229.00 | 262.00 |
+| amazoncorretto-pure | 231.82 | 231.00 | 3.96 | 229.00 | 262.00 |
 | graaljdk-imaging-parallel | 76.06 | 76.00 | 2.53 | 74.00 | 95.00 |
 | graaljdk-imaging-single | 226.76 | 226.00 | 2.61 | 224.00 | 261.00 |
-| graaljdk-plain | 163.37 | 163.00 | 3.61 | 161.00 | 247.00 |
+| graaljdk-pure | 163.37 | 163.00 | 3.61 | 161.00 | 247.00 |
 | openjdk-imaging-parallel | 73.97 | 73.00 | 2.56 | 72.00 | 99.00 |
 | openjdk-imaging-single | 266.25 | 266.00 | 4.09 | 263.00 | 293.00 |
 | openjdk-opencv | 0.39 | 0.39 | 0.01 | 0.37 | 0.49 |
 | openjdk-openimaj | 30.99 | 30.00 | 1.52 | 29.00 | 35.00 |
-| openjdk-plain | 236.35 | 236.00 | 4.01 | 232.00 | 269.00 |
+| openjdk-pure | 236.35 | 236.00 | 4.01 | 232.00 | 269.00 |
 | zulu-imaging-parallel | 84.96 | 84.00 | 2.26 | 83.00 | 101.00 |
 | zulu-imaging-single | 277.46 | 277.00 | 4.50 | 273.00 | 308.00 |
-| zulu-plain | 248.50 | 248.00 | 4.41 | 244.00 | 282.00 |
+| zulu-pure | 248.50 | 248.00 | 4.41 | 244.00 | 282.00 |
 | python-pure-simple | 14597.56 | 14521.56 | 228.28 | 14342.33 | 15254.21 |
 | python-with-itertools | 13166.17 | 13155.98 | 31.02 | 13118.70 | 13239.89 |
 | python-pure-simple-with-numba | 236.77 | 236.48 | 1.00 | 234.98 | 243.49 |
