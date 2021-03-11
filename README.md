@@ -108,7 +108,7 @@ All of this now results in the following test-setup:
 | python-with-numpy-and-scipy | 33.72 | 33.68 | 0.26 | 33.00 | 35.66 |
 | python-with-opencv | 4.62 | 4.61 | 0.05 | 4.55 | 4.82 |
 
-![](documentation/Java-Single-Core.svg)
+![](documentation/All_except_outliers.svg)
 
 ## Getting Started
 
