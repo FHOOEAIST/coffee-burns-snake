@@ -10,7 +10,7 @@ set python3710=python:3.7.10-buster
 
 set volumeimaging=%basepath%:/app/
 
-set statementplaint=java -cp /app/ Pure
+set statementpure=java -cp /app/ Pure
 set statementimagingsingle=java -cp /app/:/app/core_single.jar Imaging
 set statementimagingparallel=java -cp /app/:/app/core_parallel.jar Imaging
 set statementopencv=java -cp /app/:/app/aistcv-4.3.0.jar OpenCVPerformanceTest
@@ -21,13 +21,13 @@ set statementpython=/bin/bash -c "apt update; apt install -y libgl1-mesa-glx; cd
 mkdir res
 
 
-rem Java Plain
+rem Java Pure
 
-docker container run --cpus=4 -v %volumeimaging% --rm %openjdk% %statementplaint% > res/openjdk-plain.txt
-docker container run --cpus=4 -v %volumeimaging% --rm %amazoncorretto% %statementplaint% > res/amazoncorretto-plain.txt
-docker container run --cpus=4 -v %volumeimaging% --rm %zulu% %statementplaint% > res/zulu-plain.txt
-docker container run --cpus=4 -v %volumeimaging% --rm %adopt% %statementplaint% > res/adopt-plain.txt
-docker container run --cpus=4 -v %volumeimaging% --rm %graaljdk% %statementplaint% > res/graaljdk-plain.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %openjdk% %statementpuret% > res/openjdk-pure.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %amazoncorretto% %statementpuret% > res/amazoncorretto-pure.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %zulu% %statementpuret% > res/zulu-pure.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %adopt% %statementpure% > res/adopt-pure.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %graaljdk% %statementpure% > res/graaljdk-pure.txt
 
 rem Java using Imaging (Single Core)
 
