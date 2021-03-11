@@ -47,7 +47,7 @@ docker container run --cpus=4 -v %volumeimaging% --rm %graaljdk% %statementimagi
 
 rem Java using OpenCV
 
-docker container run --cpus=4 -v %volumeimaging% --rm %openjdk% %statementopencv% > res/openjdk-opencv-parallel.txt
+docker container run --cpus=4 -v %volumeimaging% --rm %openjdk% %statementopencv% > res/openjdk-opencv.txt
 
 rem Java using OpenIMAJ
 
