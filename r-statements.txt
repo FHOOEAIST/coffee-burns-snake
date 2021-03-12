@@ -1,2 +1,0 @@
-library("ggplot2")
-ggplot(stack(Speed_complete), aes(x=ind, y = values)) + geom_boxplot() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) + xlab("Type/Runs") + ylab("ms")
