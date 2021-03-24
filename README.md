@@ -149,7 +149,7 @@ and `python-with-opencv`. But a pixel-wise read and write access of an image is 
 processing and for this we have chosen this as foundation of our comparison. 
 
 Referring only to the Java implementations the comparison shows that the used JDK has a high impact to the actual 
-runtime - independent of single or multicore usage. For this, it can be seen that the usage of Graal has a positive 
+runtime - independent of single or multicore usage. For this, it can be seen that the usage of GraalVM has a positive 
 impact according to the runtime of the executed implementations. 
 
 The implementations also show that classic approaches in the context of image processing using for loops to iterate the 
@@ -160,7 +160,7 @@ can be further bypassed using JIT compilation with `Numba`, that in turn leads t
 The comparison of `openjdk-openimaj` and `python-with-numpy-and-scipy` shows, that there are nearly no performance 
 differences between Java or Python if state-of-the-art image processing frameworks are used. Based on the comparison 
 of the language specialized wrappers of the `OpenCV` framework, Java's overhead of the native function call seems to be 
-smaller and for this highly outperforms the Python version. 
+smaller and for this outperforms the Python version. 
 
 Finally, the comparison also shows that the Imaging framework is not highly optimized in terms of convolution 
 algorithms, but is capable to perform image processing tasks in  an adequate amount of time. The great advantage of the 
