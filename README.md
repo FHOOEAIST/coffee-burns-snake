@@ -192,4 +192,4 @@ distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 If you are going to use this project as part of a research paper, we would ask you to reference this project by citing
 it.
 
-TODO zenodo doi
+[![DOI](https://zenodo.org/badge/341865683.svg)](https://zenodo.org/badge/latestdoi/341865683)
