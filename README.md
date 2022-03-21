@@ -193,3 +193,7 @@ If you are going to use this project as part of a research paper, we would ask y
 it.
 
 [![DOI](https://zenodo.org/badge/341865683.svg)](https://zenodo.org/badge/latestdoi/341865683)
+
+Additionally, this work was used in the following publications:
+
+ - [Praschl, C., Pointner, A., Baumgartner, D., & Zwettler, G. A. (2021). Imaging framework: An interoperable and extendable connector for image-related Java frameworks. SoftwareX, 16, 100863.](https://doi.org/10.1016/j.softx.2021.100863)
